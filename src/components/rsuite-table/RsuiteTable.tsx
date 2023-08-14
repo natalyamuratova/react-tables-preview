@@ -1,5 +1,5 @@
 import React  from 'react';
-import { Table, Column, HeaderCell, Cell } from 'rsuite-table';
+import {Table, Column, HeaderCell, Cell, SortType} from 'rsuite-table';
 import { Button } from '@mui/material';
 import {getUsers} from "../../constants/users-datasource";
 import 'rsuite-table/dist/css/rsuite-table.css';
@@ -7,9 +7,11 @@ import {User} from "../../models/user";
 import './rsuite-table.css';
 
 const rowKey = 'id';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ExpandCell = ({ dataKey, expandedRowKeys, onChange, ...props }: { dataKey: any, expandedRowKeys: any, onChange: (rowData: any, dataKey: any) => void }) => (
     <Cell {...props}>
-        {(rowData, rowIndex) => {
+        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+        {(rowData) => {
             return <Button
                 onClick={() => {
                     onChange(rowData, dataKey);
@@ -24,11 +26,11 @@ const ExpandCell = ({ dataKey, expandedRowKeys, onChange, ...props }: { dataKey:
 export const RsuiteTable = () => {
     const users = getUsers();
 
-    const [expandedRowKeys, setExpandedRowKeys] = React.useState([]);
+    const [expandedRowKeys, setExpandedRowKeys] = React.useState<number[]>([]);
 
-    const handleExpanded = (rowData: any, dataKey: any) => {
+    const handleExpanded = (rowData: User) => {
         let open = false;
-        const nextExpandedRowKeys = [];
+        const nextExpandedRowKeys: number[] = [];
 
         expandedRowKeys.forEach(key => {
             if (key === rowData[rowKey]) {
@@ -46,8 +48,7 @@ export const RsuiteTable = () => {
     };
 
     const [sortColumn, setSortColumn] = React.useState<keyof User>('id');
-    const [sortType, setSortType] = React.useState<'asc' | 'desc'>('asc');
-    const [loading, setLoading] = React.useState(false);
+    const [sortType, setSortType] = React.useState<SortType | undefined>('asc');
 
     const sortData = () => {
         if (sortColumn && sortType) {
@@ -70,11 +71,12 @@ export const RsuiteTable = () => {
         return [...users];
     };
 
-    const handleSortColumn = (sortColumn: keyof User, sortType: 'asc' | 'desc') => {
-        setLoading(true);
+    const handleSortColumn = (dataKey: string, sortType?: SortType) => {
+        console.log(dataKey);
+      //  setLoading(true);
 
         setTimeout(() => {
-            setLoading(false);
+     //       setLoading(false);
             setSortColumn(sortColumn);
             setSortType(sortType);
         }, 500);
@@ -95,7 +97,7 @@ export const RsuiteTable = () => {
             renderRowExpanded={rowData => {
                 return (
                     <div>
-                        <p>{rowData.fio}</p>
+                        <p>{rowData?.fio}</p>
                     </div>
                 );
             }}

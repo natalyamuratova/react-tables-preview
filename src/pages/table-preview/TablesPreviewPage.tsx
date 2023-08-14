@@ -8,6 +8,7 @@ export const TablesPreviewPage = () => {
     const [activeTab, setActiveTab] = useState(0);
 
     const handleTabChange = (event: SyntheticEvent, newValue: number) => {
+        console.log(event);
         setActiveTab(newValue);
     };
     return (

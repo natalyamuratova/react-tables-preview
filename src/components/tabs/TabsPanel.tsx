@@ -1,10 +1,10 @@
-import {FC} from "react";
+import {FC, SyntheticEvent} from "react";
 import { Tab, Tabs } from "@mui/material";
 import './tabs-panel.css';
 
 interface TabsProps {
     value: number;
-    handleChange: () => void;
+    handleChange: (event: SyntheticEvent, newValue: number) => void;
 }
 
 export const TabsPanel: FC<TabsProps> = ({ value, handleChange }) => {
