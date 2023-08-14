@@ -4,6 +4,7 @@ import { Box, Typography } from '@mui/material';
 import {User} from "../../models/user";
 import {getUsers} from "../../constants/users-datasource";
 
+
 export const ReactMaterialTable = () => {
     const columns = useMemo<MRT_ColumnDef<User>[]>(
         () => [
