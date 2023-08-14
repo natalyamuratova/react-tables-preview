@@ -3,6 +3,7 @@ import MaterialReactTable, { MRT_ColumnDef } from 'material-react-table';
 import { Box, Typography } from '@mui/material';
 import {User} from "../../models/user";
 import {getUsers} from "../../constants/users-datasource";
+import './react-material-table.css';
 
 
 export const ReactMaterialTable = () => {
@@ -45,6 +46,9 @@ export const ReactMaterialTable = () => {
             enableColumnOrdering
             enableRowVirtualization
             enableExpanding
+            muiTablePaperProps={
+                { classes: { root: 'app-table-paper-root' }}
+            }
             muiTableContainerProps={
                 { classes: { root: 'app-table-container' } }
             }
