@@ -77,7 +77,7 @@ export const RsuiteTable = () => {
 
         setTimeout(() => {
      //       setLoading(false);
-            setSortColumn(sortColumn);
+            setSortColumn(dataKey);
             setSortType(sortType);
         }, 500);
     };

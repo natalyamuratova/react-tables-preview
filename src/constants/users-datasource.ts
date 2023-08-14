@@ -15,6 +15,7 @@ export const getUsers = () => {
         usersList.push({
             ...user,
             id: i + 1,
+            fio: `${i} ${user.fio}`,
         })
     }
     return usersList;

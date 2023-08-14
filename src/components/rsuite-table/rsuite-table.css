@@ -1,3 +1,7 @@
 .app-rsuite-table {
     width: 100% !important;
 }
+
+.rs-table-row-expanded {
+    padding: 0;
+}
